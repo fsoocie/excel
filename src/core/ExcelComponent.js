@@ -1,9 +1,8 @@
 import {DomListener} from '@core/DomListener';
 
-
 export class ExcelComponent extends DomListener {
-  constructor($el, options = {}) {
-    super($el, options);
+  constructor($root, options = {}) {
+    super($root, options);
   }
   toHTML() {
     return ''

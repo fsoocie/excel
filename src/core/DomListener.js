@@ -22,7 +22,6 @@ export class DomListener {
         throw new Error(`'${method}' is not exist in component '${this.name}'`)
       }
       if (state === 'on') {
-        console.log(this[method])
         this[method] = this[method].bind(this)
       }
       this.$root[state](listener, this[method])
