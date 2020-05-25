@@ -11,6 +11,9 @@ class Dom {
     }
     return this.$el.outerHTML.trim()
   }
+  find(selector) {
+    return $(this.$el.querySelector(selector))
+  }
   append(node) {
     if (node instanceof Dom) {
       node = node.$el
@@ -44,6 +47,37 @@ class Dom {
   }
   css(styles = {}) {
     Object.keys(styles).forEach(key => this.$el.style[key] = styles[key])
+  }
+  addClass(className) {
+    this.$el.classList.add(className)
+    return this
+  }
+  removeClass(className) {
+    this.$el.classList.remove(className)
+    return this
+  }
+  id(parse) {
+    if (parse) {
+      return {
+        row: +this.$el.dataset.id.split(':')[0],
+        col: +this.$el.dataset.id.split(':')[1]
+      }
+    }
+    return this.$el.dataset.id
+  }
+  text(text) {
+    if (typeof text === 'string') {
+      this.$el.textContent = text
+      return this
+    } else if (this.$el.tagName === 'INPUT') {
+      this.$el.value = text
+      return this
+    }
+    return this.$el.textContent
+  }
+  focus() {
+    this.$el.focus()
+    return this
   }
   clear() {
     this.html('')
