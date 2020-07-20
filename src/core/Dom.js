@@ -42,6 +42,12 @@ class Dom {
   get data() {
     return this.$el.dataset
   }
+  getStyles(styles = []) {
+    return styles.reduce((acc, cur) => {
+      acc[cur] = this.$el.style[cur]
+      return acc
+    }, {})
+  }
   findAll(selector) {
     return this.$el.querySelectorAll(selector)
   }
@@ -51,6 +57,9 @@ class Dom {
   addClass(className) {
     this.$el.classList.add(className)
     return this
+  }
+  get nativeId() {
+    return this.$el.id
   }
   removeClass(className) {
     this.$el.classList.remove(className)
@@ -66,7 +75,7 @@ class Dom {
     return this.$el.dataset.id
   }
   text(text) {
-    if (typeof text === 'string') {
+    if (typeof text !== 'undefined') {
       this.$el.textContent = text
       return this
     } else if (this.$el.tagName === 'INPUT') {
@@ -78,6 +87,20 @@ class Dom {
   focus() {
     this.$el.focus()
     return this
+  }
+  attr(name, value) {
+    if (value) {
+      this.$el.setAttribute(name, value)
+      return this
+    }
+    return this.$el.getAttribute(name)
+  }
+  value(text) {
+    if (text) {
+      this.$el.value = text
+      return this
+    }
+    return this.$el.value
   }
   clear() {
     this.html('')

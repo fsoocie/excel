@@ -46,7 +46,7 @@
   }
 
   & .cell{
-    display: flex;
+    display: inline-block;
     padding: 4px;
     min-width: $info-cell-width;
     width: $cell-width;
