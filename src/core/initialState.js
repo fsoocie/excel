@@ -1,4 +1,3 @@
-import {storage} from '@core/utils';
 import {defaultStyles, defaultTitle} from '@/constants';
 
 const defaultState = {
@@ -8,7 +7,10 @@ const defaultState = {
   stylesState: {},
   currentStyles: defaultStyles,
   tableTitle: defaultTitle,
-  currentText: ''
+  currentText: '',
+  updateDate: new Date().toJSON()
 }
 
-export const initialState = storage('app-state') || defaultState
+export function toInitialState(state) {
+  return state ? state : JSON.parse(JSON.stringify(defaultState))
+}
