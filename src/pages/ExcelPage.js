@@ -1,5 +1,5 @@
 import {Page} from '@core/Page';
-import {CreateStore} from '@core/createStore';
+import {CreateStore} from '@core/store/createStore';
 import {rootReducer} from '@/redux/rootReducer';
 import {toInitialState} from '@core/initialState';
 import {debounce, storage} from '@core/utils';
