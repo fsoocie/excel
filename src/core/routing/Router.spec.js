@@ -1,5 +1,5 @@
 import {Router} from './Router';
-import {Page} from '../Page';
+import {Page} from '../page/Page';
 
 class DashboardPage extends Page {
   getRoot() {
@@ -22,6 +22,11 @@ describe('Router:', () => {
   })
   test('should render dashboard HTML', () => {
     router.changePageHandler()
-    expect($root.innerHTML).toBe('<div>dashboard</div>')
+    return new Promise(resolve => {
+      setTimeout(() => {
+        expect($root.innerHTML).toBe('<div>dashboard</div>')
+        resolve()
+      }, 1500)
+    })
   })
 })
