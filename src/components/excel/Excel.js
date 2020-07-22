@@ -36,7 +36,6 @@ export class Excel {
     if (process.env.NODE_ENV === 'production') {
       document.addEventListener('contextmenu', preventDefault)
     }
-    console.log(process.env.NODE_ENV)
   }
   destroy() {
     this.components.forEach(component => component.destroy())
